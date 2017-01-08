@@ -1,10 +1,13 @@
 from bottle import route, run, static_file, template, error
-import pump
+from pump import Pump
+
+
+pump = Pump()
 
 @route('/')
 def index():
-    
-    return template('templates/index')
+	
+	return template('templates/index')
 
 
 @route('/configure')
@@ -23,12 +26,19 @@ def dispense(volume):
 
 @route('/static/<filename:path>')
 def send_static(filename):
-    return static_file(filename, root='./static')
+
+	return static_file(filename, root='./static')
 
 
 @error(404)
 def error404(error):
-    return 'Nothing here'
 
+	return 'Nothing here'
 
-run(host='127.0.0.1', port=8080)
+try:
+	run(host='127.0.0.1', port=8080)
+except KeyboardInterrupt:
+	pass
+
+pump.stop()
+io.cleanup()
