@@ -16,6 +16,42 @@ def configure():
 	return template('templates/configure')
 
 
+@route('/maintain')
+def maintain():
+
+	return template('templates/maintain')
+
+
+@route('/run/reverse')
+def run_reverse():
+
+	pump.reverse()
+
+	return 'Running the pump in reverse'
+
+
+@route('/run/stop')
+def run_stop():
+
+	pump.stop()
+
+	return 'Stopped the pump'
+
+
+@route('/run/start')
+def run_start():
+
+	pump.forward()
+
+	return 'Started the pump'
+
+
+@route('/run/state')
+def run_state():
+
+	return pump.status()
+
+
 @route('/dispense/<volume>')
 def dispense(volume):
 
@@ -25,7 +61,7 @@ def dispense(volume):
 
 
 @route('/static/<filename:path>')
-def send_static(filename):
+def serve_static(filename):
 
 	return static_file(filename, root='./static')
 
@@ -41,4 +77,4 @@ except KeyboardInterrupt:
 	pass
 
 pump.stop()
-io.cleanup()
+pump.cleanup()

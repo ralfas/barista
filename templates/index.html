@@ -21,7 +21,7 @@
       text-align: center;
     }
 
-    .panel-body > button:nth-child(2) {
+    .panel-body > button:nth-child(2), .panel-body > a:nth-child(2){
       margin: 0 1.1em;
     }
     </style>
@@ -43,7 +43,7 @@
     <script>$().ready(function(){
       $('.container-fluid').html(buildPanels(drinks));
 
-      $('button').click(function(){
+      $('button[data-volume]').click(function(){
         var volume = $(this).data('volume');
         $('.modal-title').text('Pouring ' + volume + 'ml of espresso…');
         $('.modal').modal('show');
