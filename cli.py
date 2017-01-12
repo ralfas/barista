@@ -25,7 +25,7 @@ try:
 		if cmd == "help":
 			print "(f)requency, (start), (stop), (d)uty, (p17), (p24), (q)"
 		elif cmd[0] == "f":
-			pwm.ChangeFrequency(cmd[2:])
+			pwm.ChangeFrequency(int(cmd[2:]))
 			print "setting frequency to %s" % (cmd[2:])
 		elif cmd == "start":
 			pwm.start(1)
@@ -34,7 +34,7 @@ try:
 			pwm.stop()
 			print "stopped"
 		elif cmd[0] == "d":
-			pwm.ChangeDutyCycle(cmd[2:])
+			pwm.ChangeDutyCycle(int(cmd[2:]))
 			print "setting duty cycle to %s" % (cmd[2:])
 		elif cmd[0] == "p" and cmd[1:3] in ("17", "24"):
 
@@ -45,7 +45,7 @@ try:
 				value = io.HIGH
 			else:
 				continue
-			io.output(cmd[1:3], value)
+			io.output(int(cmd[1:3]), value)
 			print "setting pin %s to %d" % (cmd[1:3], value)
 		elif cmd[0] == "q":
 			pwm.stop()
