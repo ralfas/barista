@@ -1,5 +1,4 @@
 import time
-from gpio_utils import set_pwm
 
 try:
 	import RPi.GPIO as io
