@@ -18,3 +18,19 @@ def cleanup():
 	pass
 
 
+class PWM:
+
+	def __init__(self, pin, frequency):
+		pass
+	
+	def start(self, duty_cycle):
+		pass
+
+	def stop(self):
+		pass
+
+	def ChangeFrequency(self, frequency):
+		pass
+
+	def ChangeDutyCycle(self, duty_cycle):
+		pass

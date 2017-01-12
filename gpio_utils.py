@@ -8,7 +8,7 @@ try:
 			f.write(value)
 			f.close()
 		except:
-			print("Error writing to: " + property + " value: " + value)	
+			print("Error writing to: " + property + " value: " + str(value))
 
 except ImportError:
 
