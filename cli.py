@@ -9,7 +9,7 @@ except ImportError:
 
 io.setmode(io.BCM)
 
-io.setup(4, io.OUT)
+io.setup(17, io.OUT)
 io.setup(18, io.OUT)
 io.setup(24, io.OUT)
 
@@ -25,7 +25,7 @@ try:
 	while True:
 		cmd = raw_input("Command > ")
 		if cmd == "help":
-			print "(f)requency, (a)ctive, (d)uty, (p18), (p23), (p24)"
+			print "(f)requency, (a)ctive, (d)uty, (p17), (p18), (p24), (q)"
 		elif cmd[0] == "f":
 			set_pwm("frequency", cmd[2:])
 			print "setting frequency to %s" % (cmd[2:])
@@ -37,14 +37,17 @@ try:
 			print "setting duty to %s" % (cmd[2:])
 		elif cmd[0] == "p":
 
-			value = GPIO.LOW
+			value = io.LOW
 			if cmd[4] == "0":
-				value = GPIO.LOW
+				value = io.LOW
 			elif cmd[4] == "1":
-				value = GPIO.HIGH
+				value = io.HIGH
 			else:
 				continue
-			GPIO.output(cmd[1:2], value)
-			print "setting %s to %d" % (cmd[1:2], value)
+			io.output(cmd[1:3], value)
+			print "setting pin %s to %d" % (cmd[1:3], value)
+		elif cmd[0] == "q":
+			io.cleanup()
+			break
 except KeyboardInterrupt:
 	io.cleanup()
