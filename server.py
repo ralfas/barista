@@ -1,8 +1,13 @@
-from bottle import route, run, static_file, template, error
+from bottle import route, run, static_file, template, error, hook, response
 from pump import Pump
 
 
 pump = Pump()
+
+@hook('after_request')
+def no_cache():
+    response.headers['Cache-Control'] = 'max-age=0, no-cache, no-store'
+
 
 @route('/')
 def index():
@@ -52,7 +57,7 @@ def run_state():
 	return pump.status()
 
 
-@route('/dispense/<volume>')
+@route('/dispense/<volume:int>')
 def dispense(volume):
 
 	pump.dispense(volume)

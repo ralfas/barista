@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="form-group col-sm-12 text-center">
-        <button class="btn btn-lg btn-primary" onclick="storeDrinkVolumes();return false;">Save my changes</button><button class="btn btn-lg btn-default" onclick="window.location = '/'">Ignore any changes above</button>
+        <button class="btn btn-lg btn-primary" onclick="storeDrinkVolumes();return false;">Save my changes</button><button class="btn btn-lg btn-default" onclick="window.location = '/'">Ignore any changes above</button><button class="btn btn-lg btn-default" onclick="localStorage.removeItem('drinks');$('tbody').html(buildTableBody(defaultDrinks));return false;">Reset to defaults</button>
       </div>
     </div>
 

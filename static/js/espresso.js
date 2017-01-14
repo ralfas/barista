@@ -56,7 +56,7 @@ function buildPanels (drinks) {
 	}
 
 	out += '<div class="col-sm-6"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Other</h3></div><div class="panel-body">';
-	out += '<a class="btn btn-lg btn-default" href="/configure">Reconfigure Volumes</a>';
+	out += '<a class="btn btn-lg btn-default" href="/configure">Reconfigure</a>';
 	out += '<a class="btn btn-lg btn-default" href="/maintain">Maintain</a>';
 	out += '</div></div></div>';
 
