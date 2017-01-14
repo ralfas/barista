@@ -1,4 +1,5 @@
-import time
+from time import sleep
+import argparse
 
 try:
 	import RPi.GPIO as io
@@ -16,40 +17,42 @@ io.setup(enable_pin, io.OUT)
 io.setup(in1, io.OUT)
 io.setup(in2, io.OUT)
 
-pwm = io.PWM(18, 500)
+# setting frequency to 60
+pwm = io.PWM(18, 60)
+
+# facing pump
+# pin 24 HIGH and pin 17 LOW is clockwise
+# pin 24 LOW and pin 17 HIGH is anti-clockwise
+# duty cycle 20 low, 100 high
+
+
+def percent(string):
+    value = float(string)
+    if value < 0 or value > 100:
+        raise argparse.ArgumentTypeError('Value has to be between 0 and 100')
+    return value
+
+parser = argparse.ArgumentParser(description='Run the pump for a fixed time duration')
+parser.add_argument('direction', choices=['cw', 'acw'], help='clockwise or anti-clockwise')
+parser.add_argument('duration', type=int, help='duration in seconds')
+parser.add_argument('duty_cycle', type=percent, help='duty cycle (0 to 100)')
+
+args = parser.parse_args()
 
 try:
-	while True:
-		cmd = raw_input("Command > ")
-		if cmd == "help":
-			print "(f)requency, (start), (stop), (d)uty, (p17), (p24), (q)"
-		elif cmd[0] == "f":
-			pwm.ChangeFrequency(int(cmd[2:]))
-			print "setting frequency to %s" % (cmd[2:])
-		elif cmd == "start":
-			pwm.start(1)
-			print "started with duty 1"
-		elif cmd == "stop":
-			pwm.stop()
-			print "stopped"
-		elif cmd[0] == "d":
-			pwm.ChangeDutyCycle(int(cmd[2:]))
-			print "setting duty cycle to %s" % (cmd[2:])
-		elif cmd[0] == "p" and cmd[1:3] in ("17", "24"):
+	print "running pump"
+	if args.direction == "cw":
+		io.output(24, io.HIGH)
+		io.output(17, io.LOW)
+	else:
+		io.output(24, io.LOW)
+		io.output(17, io.HIGH)
 
-			value = io.LOW
-			if cmd[4] == "0":
-				value = io.LOW
-			elif cmd[4] == "1":
-				value = io.HIGH
-			else:
-				continue
-			io.output(int(cmd[1:3]), value)
-			print "setting pin %s to %d" % (cmd[1:3], value)
-		elif cmd[0] == "q":
-			pwm.stop()
-			io.cleanup()
-			break
+	pwm.start(args.duty_cycle)
+	sleep(args.duration)
+	pwm.stop()
+	print "stopped pump"
+	io.cleanup()
 except KeyboardInterrupt:
 	pwm.stop()
 	io.cleanup()
