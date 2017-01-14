@@ -6,7 +6,8 @@ pump = Pump()
 
 @hook('after_request')
 def no_cache():
-    response.headers['Cache-Control'] = 'max-age=0, no-cache, no-store'
+#    response.headers['Cache-Control'] = 'max-age=0, no-cache, no-store'
+	pass
 
 
 @route('/')
