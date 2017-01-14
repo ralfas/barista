@@ -21,9 +21,10 @@ io.setup(in2, io.OUT)
 pwm = io.PWM(18, 60)
 
 # facing pump
-# pin 24 HIGH and pin 17 LOW is clockwise
-# pin 24 LOW and pin 17 HIGH is anti-clockwise
-# duty cycle 20 low, 100 high
+# with pump red connected to L293D 1Y
+# with pump black connected to L293D 2Y
+# GPIO #17 connected to L293D 1A
+# GPIO #24 connected to L293D 2A
 
 
 def percent(string):

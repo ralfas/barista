@@ -10,11 +10,12 @@ class Pump:
 	"""Uses a pump to dispense liquid."""
 
 	enable_pin = 18
-	in1_pin = 4
-	in2_pin = 17
-	stop_duty_cycle = 0
-	default_duty_cycle = 100#Minimum ~50 for opperation
-	default_frequency = 500#Hz
+	in1_pin = 17
+	in2_pin = 24
+	stop_duty_cycle = 0# Hz
+	default_duty_cycle = 100# Percent
+	default_frequency = 60# Hz
+	seconds_per_ml = 0.12
 
 
 	def __init__(self):
@@ -63,9 +64,9 @@ class Pump:
 	def dispense(self, ml):
 		print 'telling the pump to dispense %s' % (ml)
 
-		self.pwm.ChangeDutyCycle(Pump.default_duty_cycle)
+		self.forward()
 		sleep(self._sleep_for_ml(ml))
-		self.pwm.ChangeDutyCycle(Pump.stop_duty_cycle)
+		self.stop()
 
 
 	def cleanup(self):
@@ -75,4 +76,4 @@ class Pump:
 	def _sleep_for_ml(self, ml):
 		"""How long to sleep to dispense ml"""
 
-		return 0
+		return Pump.seconds_per_ml * ml

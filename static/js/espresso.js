@@ -1,18 +1,15 @@
 var defaultDrinks = [
 	{name: "Latte", size_varieties: [
-		{name: "Small", volume: 20}, {name: "Medium", volume: 40}, {name: "Large", volume: 60}
+		{name: "Small", volume: 30}, {name: "Medium", volume: 45}, {name: "Large", volume: 60}
 	]},
 	{name: "Cappuccino", size_varieties: [
-		{name: "Small", volume: 20}, {name: "Medium", volume: 40}, {name: "Large", volume: 60}
-	]},
-	{name: "Espresso", size_varieties: [
-		{name: "Small", volume: 20}, {name: "Medium", volume: 40}, {name: "Large", volume: 60}
+		{name: "Small", volume: 30}, {name: "Medium", volume: 45}, {name: "Large", volume: 60}
 	]},
 	{name: "Macchiato", size_varieties: [
-		{name: "Small", volume: 20}, {name: "Medium", volume: 40}, {name: "Large", volume: 60}
+		{name: "Small", volume: 30}, {name: "Medium", volume: 45}, {name: "Large", volume: 60}
 	]},
 	{name: "Extras", size_varieties: [
-		{name: "1x shot", volume: 20}
+		{name: "1x shot", volume: 30}
 	]}
 ];
 
