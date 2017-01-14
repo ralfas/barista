@@ -42,11 +42,11 @@ args = parser.parse_args()
 try:
 	print "running pump"
 	if args.direction == "cw":
-		io.output(24, io.HIGH)
-		io.output(17, io.LOW)
-	else:
 		io.output(24, io.LOW)
 		io.output(17, io.HIGH)
+	else:
+		io.output(24, io.HIGH)
+		io.output(17, io.LOW)
 
 	pwm.start(args.duty_cycle)
 	sleep(args.duration)
