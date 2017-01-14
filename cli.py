@@ -34,7 +34,7 @@ def percent(string):
 
 parser = argparse.ArgumentParser(description='Run the pump for a fixed time duration')
 parser.add_argument('direction', choices=['cw', 'acw'], help='clockwise or anti-clockwise')
-parser.add_argument('duration', type=int, help='duration in seconds')
+parser.add_argument('duration', type=float, help='duration in seconds')
 parser.add_argument('duty_cycle', type=percent, help='duty cycle (0 to 100)')
 
 args = parser.parse_args()
