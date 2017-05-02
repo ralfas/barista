@@ -9,7 +9,7 @@ except ImportError:
 class Pump:
 	"""Uses a pump to dispense liquid."""
 
-	enable_pin = 18
+	enable_pin = 25
 	in1_pin = 17
 	in2_pin = 24
 	stop_duty_cycle = 0# Hz

@@ -9,7 +9,7 @@ except ImportError:
 
 io.setmode(io.BCM)
 
-enable_pin = 18
+enable_pin = 25
 in1 = 17
 in2 = 24
 
@@ -18,7 +18,7 @@ io.setup(in1, io.OUT)
 io.setup(in2, io.OUT)
 
 # setting frequency to 60
-pwm = io.PWM(18, 60)
+pwm = io.PWM(enable_pin, 60)
 
 # facing pump
 # with pump red connected to L293D 1Y
