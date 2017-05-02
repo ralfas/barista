@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from bottle import route, run, static_file, template, error, hook, response
 from pump import Pump
 
