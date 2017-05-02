@@ -43,5 +43,5 @@ sudo vi /etc/xdg/lxsession/LXDE-pi/autostart
 # Start Barista
 @/home/pi/workspace/barista/run.sh
 # Start Epiphany in kiosk mode
-@epiphany-browser -a --profile /home/pi/.config http://127.0.0.1:8080/config
+@epiphany-browser -a --profile /home/pi/.config http://127.0.0.1:8080/configure
 ```
